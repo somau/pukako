@@ -442,10 +442,10 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
           <h2 class="rv d1">“Felt like <em>home</em>”</h2>
           <p class="rev-by rv d1">gabriel Aiyelabola, who had breakfast here every day for a week</p>
         </div>
-        <div class="rating-line rv d2"><span class="s" aria-hidden="true">★★★★★</span><span>4.6 from 823 Google reviews · 659 five-star</span></div>
+        <div class="rating-line rv d2"><span class="s" aria-hidden="true">★★★★★</span><span>4.6 from 823 Google reviews · 4.6 on Tripadvisor, 5.0 for atmosphere</span></div>
       </div>
     </div>
-    <div class="marquees" role="region" aria-label="Guest reviews from Google, scrolling automatically. Hover or focus to pause.">
+    <div class="marquees" role="region" aria-label="Guest reviews from Google and Tripadvisor, scrolling automatically. Hover or focus to pause.">
       <div class="marquee m1"><div class="track">
         <div class="set" id="set1"></div><div class="set" aria-hidden="true" id="set1b"></div>
       </div></div>
@@ -453,7 +453,7 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
         <div class="set" id="set2"></div><div class="set" aria-hidden="true" id="set2b"></div>
       </div></div>
     </div>
-    <div class="wrap"><p class="rev-note">Real reviews from Google Maps, quoted as written.</p></div>
+    <div class="wrap"><p class="rev-note">Real reviews from Google Maps and Tripadvisor, quoted as written.</p></div>
   </section>
 
   <section class="press" aria-label="Written about by">
@@ -518,14 +518,16 @@ const REVIEWS = [
   ["Kryštof Večerek","Same as the sister location on Bisma street, meaning a great and cozy place to get good filter coffee (V60, including to-go/takeaway option)."],
   ["gabriel Aiyelabola","Favourite place to eat. I was in ubud for a week and I had breakfast here everyday. Staff remembered me second time. Felt like home"],
   ["Dave Hutch","Cool cafe, great views, tatsty smoothie bowls and good coffee ☕️ 👌🏼"],
+  ["Galih Mulya Nugraha","Tempat terbaik di Ubud untuk menikmati suasana tenang. Kopi, Panini, Semua enak.","Tripadvisor"],
+  ["Santhi Bali Holidays","Suasana nya bagus , alam pedesaan , pesawahan dan perbukitan ,udaranya sejuk . Coffe nya enak pelayanan ramah","Tripadvisor"],
   ["Katy Aston","Excellent smashed avocado on sourdough bread and two perfectly cooked runny poached eggs and hollandaise sauce. Great setting to relax with a beer afterwards."]
 ];
 (() => {
-  const card = ([who, q]) => { const f = document.createElement('figure'); f.className = 'rcard';
+  const card = ([who, q, src]) => { const f = document.createElement('figure'); f.className = 'rcard';
     const b = document.createElement('blockquote'); b.textContent = q; const c = document.createElement('figcaption');
-    const n = document.createElement('b'); n.textContent = who; c.append(n, ' · Google review'); f.append(b, c); return f; };
+    const n = document.createElement('b'); n.textContent = who; c.append(n, ' · ' + (src || 'Google') + ' review'); f.append(b, c); return f; };
   const fill = (ids, list) => ids.forEach(id => { const el = document.getElementById(id); list.forEach(r => el.append(card(r))); });
-  fill(['set1','set1b'], REVIEWS.slice(0, 7)); fill(['set2','set2b'], REVIEWS.slice(7));
+  fill(['set1','set1b'], REVIEWS.slice(0, 8)); fill(['set2','set2b'], REVIEWS.slice(8));
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
   const header = document.getElementById('top');
