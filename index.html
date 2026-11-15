@@ -582,6 +582,15 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
 .hero .l-rice svg{position:absolute;bottom:-6%;left:-3%;width:min(46vw,560px);color:#0f150a;opacity:.85;filter:blur(2px)}
 .hero .l-copy{z-index:3;display:flex;align-items:flex-end}
 .hero .copy{padding-bottom:clamp(56px,11vh,120px);max-width:640px}
+.hero .kicker{font:600 12.5px/1.3 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--sun);margin:0 0 16px}
+details.more{margin:10px 0 0}
+details.more>summary{cursor:pointer;list-style:none;display:inline-flex;gap:10px;align-items:center;font:600 14px/1.2 var(--sans);color:var(--cobalt);padding:8px 0}
+.corner details.more>summary{color:var(--sun)}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::after{content:"+";font:300 22px/1 var(--sans);transition:transform .3s var(--ease)}
+details.more[open]>summary::after{transform:rotate(45deg)}
+details.more>p{margin:6px 0 0}
+.story .belief{font:400 clamp(22px,2.4vw,30px)/1.25 var(--display);max-width:26em;margin:0 0 8px}
 .hero h1{font-size:clamp(50px,8.4vw,116px);line-height:.98;margin:0 0 22px}
 .hero h1 em{font-style:normal;color:var(--sun)}
 .hero .lede{font-size:clamp(17px,1.55vw,20px);color:var(--on-dark-muted);max-width:30em;margin:0 0 30px}
@@ -747,6 +756,18 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
 .rv.in{opacity:1;transform:none}
 .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.dish .img img,.btn{transition:none}}
+/* bio-link scanning: tighter rhythm and swipe rows on phones */
+@media (max-width:640px){
+  .quiet,.story,.menu,.corner,.reviews,.faq{padding-top:64px;padding-bottom:64px}
+  .visit{padding-top:64px}
+  .stack{max-width:290px}
+  .stack .stalk{display:none}
+  .sec-head{margin-bottom:28px}
+  .dishes{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 calc(-1 * var(--gutter));padding:0 var(--gutter) 8px;scrollbar-width:none}
+  .dishes::-webkit-scrollbar{display:none}
+  .dish{flex:0 0 84%;scroll-snap-align:center;min-height:0}
+  .corner .ph{max-width:260px}
+}
 </style>
 </head>
 <body>
@@ -798,8 +819,9 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
     <div class="layer l-copy" data-depth="0.14">
       <div class="wrap">
         <div class="copy">
+          <p class="kicker">Pukako · café in Ubud, Bali</p>
           <h1>Coffee by the <em>sawah.</em></h1>
-          <p class="lede">Panini all day, coffee anytime, at the edge of the Subak Sok Wayah rice fields, a short walk off Jl. Raya Ubud. <b>Doors open at 7am.</b></p>
+          <p class="lede">Hot panini and specialty coffee on Ubud's rice fields. <b>Open daily from 7am.</b></p>
           <div class="ctas">
             <a class="btn btn-sun" href="https://maps.app.goo.gl/AT2YCRzeiVi87fAx8" rel="noopener" target="_blank" data-cta="hero-maps-sokwayah"><svg><use href="#pin"/></svg>Walk me there</a>
             <a class="btn btn-ghost" href="#menu">What to order <svg><use href="#arrow"/></svg></a>
@@ -816,8 +838,10 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
       <div>
         <div class="eyebrow rv">Why it's this quiet</div>
         <h2 class="rv d1">No cars. <em>Just a footpath.</em></h2>
-        <p class="rv d2">Most of Ubud's cafés sit on the main road, so breakfast comes with scooters and horns. Pukako doesn't. It sits on the edge of the Subak Sok Wayah rice fields, a few hundred metres north of Jl. Raya Ubud, and you can only get there on foot or by scooter.</p>
-        <p class="rv d2">So mornings sound like wind in the rice and a quiet jazz playlist. Take a table under the thatched roof, order a V60, and let the day start slowly.</p>
+        <p class="rv d2">Most Ubud cafés sit on the main road. Pukako sits on the rice fields, where mornings sound like wind and quiet jazz.</p>
+        <details class="more rv d2"><summary>How to get there</summary>
+          <p>It's on the edge of the Subak Sok Wayah rice fields, a few hundred metres north of Jl. Raya Ubud. You can only get there on foot or by scooter, no cars. Take a table under the thatched roof, order a V60, and let the day start slowly.</p>
+        </details>
         <p class="pull rv d2">“A short and easy stroll off the busy road and you enter a completely different world.”<span>Allan Watson, Google review</span></p>
         <div class="facts rv d3">
           <div><b>7am</b><small>doors open, every day, until 9pm</small></div>
@@ -833,6 +857,21 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
     </div>
   </section>
 
+  <section class="story" id="story">
+    <svg class="rice-art" data-depth="0.2" viewBox="0 0 300 400" aria-hidden="true"><use href="#rice"/></svg>
+    <div class="wrap">
+      <div class="eyebrow rv">Om Swastyastu · where the name comes from</div>
+      <div class="names rv d1" aria-label="Putu, Kadek, Komang">
+        <span><b>Pu</b>tu</span><i>·</i><span><b>Ka</b>dek</span><i>·</i><span><b>Ko</b>mang</span>
+      </div>
+      <p class="belief rv d2">One family, three brothers, one simple thing done well: a hot pressed panini and a proper cup of coffee.</p>
+      <details class="more rv d2"><summary>Where the name comes from</summary>
+        <p>In Bali, the first child is often named Putu, the second Kadek, the third Komang. Take the first syllable of each and you get Pukako. It also fits our founder's family: three brothers.</p>
+        <p>Pukako comes from the same family as Semujaen Restaurant. After more than seven years of running it, they opened a coffee shop in Ubud.</p>
+      </details>
+      <p class="motto rv d3">“Panini all day, coffee anytime, we serve you everywhere.”<span>The Pukako house motto</span></p>
+    </div>
+  </section>
   <section class="menu" id="menu">
     <div class="wrap">
       <div class="sec-head">
@@ -840,7 +879,7 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
           <div class="eyebrow rv">What to order</div>
           <h2 class="rv d1">Order like <em>a regular.</em></h2>
         </div>
-        <p class="rv d2">Four things people come back for. Prices in thousand rupiah, before 6% service and 10% tax. Visa and Mastercard with no surcharge.</p>
+        <p class="rv d2">Four things people come back for. Prices in K (thousand rupiah), plus 6% service and 10% tax.</p>
       </div>
       <div class="dishes">
         <article class="dish rv">
@@ -849,7 +888,7 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
             <span class="tag">Before 3pm, every day</span>
             <h3>Breakfast Specials</h3>
             <div class="price">59K</div>
-            <p>Eight breakfasts at one price until 3pm: Combo Pukako, Healing Bowl, Avocado Ham Toast, Fluffy Pancake, French Toast and more.</p>
+            <details class="more"><summary>The eight breakfasts</summary><p>Eight breakfasts at one price until 3pm: Combo Pukako, Healing Bowl, Avocado Ham Toast, Fluffy Pancake, French Toast and more.</p></details>
             <p class="proof">“l would especially recommend the healing bowl.”<span>Polina Brown, Google review</span></p>
           </div>
         </article>
@@ -859,7 +898,7 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
             <span class="tag">All day, the signature</span>
             <h3>Ubud Panini</h3>
             <div class="price">79K</div>
-            <p>Grilled chicken, pesto, avocado, tomato, bacon and mozzarella, pressed hot, with sweet potato fries and homemade tomato sauce. Or the Pukako Panini with a homemade beef patty (79K).</p>
+            <details class="more"><summary>What's in it</summary><p>Grilled chicken, pesto, avocado, tomato, bacon and mozzarella, pressed hot, with sweet potato fries and homemade tomato sauce. Or the Pukako Panini with a homemade beef patty (79K).</p></details>
             <p class="proof">“I ordered the Pukako panini and it was 10/10.”<span>Caroline Xavier, Google review</span></p>
           </div>
         </article>
@@ -869,7 +908,7 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
             <span class="tag">For the coffee people</span>
             <h3>V60 pour-over</h3>
             <div class="price">35K</div>
-            <p>Aceh Gayo or Kintamani Natural, brewed by hand. Prefer it cold? The Pukako Ice Coffee comes with vanilla ice cream and sweet milk (49K).</p>
+            <details class="more"><summary>Beans and iced option</summary><p>Aceh Gayo or Kintamani Natural, brewed by hand. Prefer it cold? The Pukako Ice Coffee comes with vanilla ice cream and sweet milk (49K).</p></details>
             <p class="proof">“Came back so many times for their V60, but everything else i tried was delicious too.”<span>Kateřina Šimonová, Google review</span></p>
           </div>
         </article>
@@ -879,7 +918,7 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
             <span class="tag">Fresh and green</span>
             <h3>Pukako Bowl</h3>
             <div class="price">65K</div>
-            <p>Mango, orange, banana, honey, yoghurt, granola and chia. Pair it with a Sawah Green juice (55K): green apple, spinach, cucumber, lime, ginger and celery.</p>
+            <details class="more"><summary>What's in it</summary><p>Mango, orange, banana, honey, yoghurt, granola and chia. Pair it with a Sawah Green juice (55K): green apple, spinach, cucumber, lime, ginger and celery.</p></details>
             <p class="proof">“Delicious coffee, smoothie bowls were phenomenal!”<span>Michelle Wormald, Google review</span></p>
           </div>
         </article>
@@ -894,7 +933,7 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
       <div>
         <div class="eyebrow rv">For laptop mornings</div>
         <h2 class="rv d1">Find your <em>quiet corner.</em></h2>
-        <p class="rv d2">Open the laptop at 7am, look up at the rice between emails. Plenty of guests come back every day of their stay, and the team remembers regulars.</p>
+        <p class="rv d2">Laptop at 7am, rice fields between emails.</p>
         <ul class="rv d2">
           <li>Open daily 7am to 9pm</li>
           <li>Card payments accepted, no surcharge on Visa and Mastercard</li>
@@ -906,20 +945,6 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
     </div>
   </section>
 
-  <section class="story" id="story">
-    <svg class="rice-art" data-depth="0.2" viewBox="0 0 300 400" aria-hidden="true"><use href="#rice"/></svg>
-    <div class="wrap">
-      <div class="eyebrow rv">Om Swastyastu · where the name comes from</div>
-      <div class="names rv d1" aria-label="Putu, Kadek, Komang">
-        <span><b>Pu</b>tu</span><i>·</i><span><b>Ka</b>dek</span><i>·</i><span><b>Ko</b>mang</span>
-      </div>
-      <div class="cols">
-        <p class="rv d2">In Bali, the first child is often named Putu, the second Kadek, the third Komang. Take the first syllable of each and you get Pukako. It also fits our founder's family: three brothers.</p>
-        <p class="rv d2">Pukako comes from the same family as Semujaen Restaurant. After more than seven years of running it, we opened a coffee shop in Ubud built around one simple thing done well: a hot, pressed panini and a proper cup of coffee.</p>
-      </div>
-      <p class="motto rv d3">“Panini all day, coffee anytime, we serve you everywhere.”<span>The Pukako house motto</span></p>
-    </div>
-  </section>
 
   <section class="reviews" id="reviews">
     <div class="wrap">
@@ -972,7 +997,7 @@ h2 em,h3 em{font-style:normal;color:var(--teak)}
           <p class="checked rv d2">Facts checked on <time datetime="2026-11-15">15 November 2026</time> from Google Maps, Tripadvisor, the Pukako menu, Instagram @pukako.cafe and Linktree.</p>
         </div>
         <div class="qa">
-          <details class="rv" open><summary><h3>What is Pukako Panini &amp; Coffee?</h3></summary><p>Pukako Panini &amp; Coffee is a café in Ubud, Bali, serving pressed panini, breakfast, smoothie bowls and specialty coffee. It has two locations: PUKAKO by Paddyfield, on the edge of the Subak Sok Wayah rice fields, and Pukako Bisma, on Jalan Bisma in Ubud.</p></details>
+          <details class="rv"><summary><h3>What is Pukako Panini &amp; Coffee?</h3></summary><p>Pukako Panini &amp; Coffee is a café in Ubud, Bali, serving pressed panini, breakfast, smoothie bowls and specialty coffee. It has two locations: PUKAKO by Paddyfield, on the edge of the Subak Sok Wayah rice fields, and Pukako Bisma, on Jalan Bisma in Ubud.</p></details>
           <details class="rv"><summary><h3>Where is Pukako by Paddyfield and how do I get there?</h3></summary><p>It is at Jl. Raya Uma, Jl. Subak Sok Wayah, Ubud, Gianyar, Bali 80571, a few hundred metres north of Jl. Raya Ubud. The café is reached by a small footpath through the rice fields, on foot or by scooter only; cars cannot get there.</p></details>
           <details class="rv"><summary><h3>What are the opening hours?</h3></summary><p>PUKAKO by Paddyfield is open every day from 7am to 9pm, according to its Google Maps listing.</p></details>
           <details class="rv"><summary><h3>How much does it cost to eat at Pukako?</h3></summary><p>Breakfast Specials cost 59K IDR each until 3pm every day. Panini cost 64K to 79K IDR, coffee starts at 28K IDR for an espresso and a V60 pour-over is 35K IDR. Menu prices exclude 6% service and 10% tax.</p></details>
