@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://somau.github.io/pukako/sitemap.xml
